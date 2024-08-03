@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.documents</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="70"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Winservice" string="Winservice" data-key="winservice" xgroups="base.group_no_one">
+ <h2>Winservice</h2>
+
+                    <div class="row mt16 o_settings_container" name="omd_setting_container">
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             id="additional_winservice_setting"
+                        >
+                            <div class="o_setting_left_pane"/>
+
+                            <div class="o_setting_right_pane">
+                                    <label for="omd_winservice_api_base_url"/>
+                                <field name="omd_winservice_api_base_url"/><br/>
+                                <label for="omd_winservice_auth_server_url"/>
+                                <field name="omd_winservice_auth_server_url"/><br/>
+                                <label for="omd_winservice_client_id"/>
+                                <field name="omd_winservice_client_id"/><br/>
+                                <label for="omd_winservice_client_secret"/>
+                                <field name="omd_winservice_client_secret"/><br/>
+
+                            </div>
+                        </div>
+
+                    </div>
+                  </div>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
