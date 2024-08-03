@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+
+
+      <!-- Inherit Form View to Modify it -->
+      <record id="view_partner_form_inherited" model="ir.ui.view">
+          <field name="name">view_partner_form_inherited</field>
+          <field name="model">res.partner</field>
+          <field name="inherit_id" ref="calk.view_partner_form_inherited"/>
+          <field name="arch" type="xml">
+
+              <xpath expr="//field[@name='code_interne']" position="after">
+                  <field name="winservice_id" groups="base.group_no_one" string="Code Interne Winservice"/>
+                  <field name="nationalCode" groups="base.group_no_one" string="nationalCode Winservice"/>
+              </xpath>
+
+          </field>
+      </record>
+
+
+        <record model="ir.ui.view" id="winservice_api_helpdesk_ticket_form_inherit">
+            <field name="name">winservice_api_helpdesk_ticket_form_inherit</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="calk.calk_helpdesk_ticket_form_inherit" />
+            <field name="arch" type="xml">
+                      <xpath expr="//field[@name='helpdesk_tags_calk']" position="after">
+                         <field name="winservice_id"  groups="base.group_no_one" />
+                     </xpath>
+      </field>
+      </record>
+
+
+    <record id="cron_winpharma_collect_tickets" model="ir.cron">
+        <field name="name">Mettre à jour les tickets assistance winpharma via l'API 2.0</field>
+        <field name="interval_number">15</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False" />
+        <field name="model_id" ref="helpdesk.model_helpdesk_ticket" />
+        <field name="code">model.getIncidents_support_list()</field>
+        <field name="state">code</field>
+    </record>
+
+    <!-- Inherit Form View to Modify it -->
+<!--    <record id="helpdesk_ticket_winservice_button" model="ir.ui.view">-->
+<!--        <field name="name">helpdesk_ticket_winservice_button</field>-->
+<!--        <field name="model">helpdesk.ticket</field>-->
+<!--        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>-->
+<!--        <field name="arch" type="xml">-->
+
+<!--            <xpath expr="//button[@name='assign_ticket_to_self']" position="after">-->
+<!--                       <button name="getIncidents_support_list" string="getIncidents_support_teams_list" type="object" class="oe_highlight" />-->
+
+<!--            </xpath>-->
+
+<!--        </field>-->
+<!--    </record>-->
+  </data>
+</odoo>
